@@ -18,6 +18,10 @@ function MovieList() {
     history.push('/AddMovie');
   }
 
+  const goToDetails = () => {
+    history.push('/MovieDetails')
+  }
+
   return (
       <main>
           <h1>Movie List</h1>
@@ -25,7 +29,7 @@ function MovieList() {
           <section className="movies">
               {movies.map(movie => {
                   return (
-                      <div key={movie.id} >
+                      <div key={movie.id} onClick={goToDetails} >
                           <h3>{movie.title}</h3>
                           <img src={movie.poster} alt={movie.title}/>
                       </div>
