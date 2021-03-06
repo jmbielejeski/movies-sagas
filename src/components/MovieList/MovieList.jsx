@@ -26,7 +26,7 @@ function MovieList() {
     })
 
     dispatch({
-      type: 'FETCH_GENRES',
+      type: 'FETCH_MOVIE_GENRES',
       payload: movieId
     })
 

@@ -7,6 +7,7 @@ function MovieDetails() {
   let history = useHistory();
 
   const movieDetails = useSelector(store => store.movieDetails);
+  const movieGenres = useSelector(store => store.movieGenres);
 
   const handleBackButton = () => {
     history.push('/');
@@ -24,6 +25,15 @@ function MovieDetails() {
           </div>
         );
       })}
+      <div> Genres:
+        {movieGenres.map(genre => {
+          return (
+            <div>
+              {genre.name}
+            </div>
+          )
+        })}
+      </div>
       <button onClick={handleBackButton}>Back to Home Page</button>
     </div>
   )
