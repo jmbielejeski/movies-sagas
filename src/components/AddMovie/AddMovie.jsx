@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from "react-router-dom";
+
 
 function AddMovie() {
 
   const dispatch = useDispatch();
+  let history = useHistory();
+
 
   // grab genres from reducer 
   const genres = useSelector(store => store.genres);
@@ -35,7 +39,13 @@ function AddMovie() {
         genre_id: Number(genre)
       }
     })
+    history.push('/');
   }
+
+  const handleCancel = () =>{
+    history.push('/')
+  }
+
 
   return (
     <div>
@@ -70,7 +80,7 @@ function AddMovie() {
         })}
       </select>
       <button onClick={handleAddMovie}>Save</button>
-      <button type="submit">Cancel</button>
+      <button onClick={handleCancel}>Cancel</button>
     </div>
   )
 }
