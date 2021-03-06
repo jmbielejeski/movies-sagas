@@ -10,7 +10,7 @@ function MovieList() {
   const movies = useSelector(store => store.movies);
 
   useEffect(() => {
-      dispatch({ type: 'FETCH_MOVIES' });
+      dispatch({ type: 'FETCH_MOVIES' })
   }, []);
 
   const goToAddMovie = () => {
