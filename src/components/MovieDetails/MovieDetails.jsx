@@ -1,13 +1,40 @@
-
+import React, { useEffect } from 'react';
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 
 function MovieDetails() {
+
+  let history = useHistory();
+
+  const movieDetails = useSelector(store => store.movieDetails);
+  const movieGenres = useSelector(store => store.movieGenres);
+
+  const handleBackButton = () => {
+    history.push('/');
+  }
+  
   return (
     <div>
-      <h1>Movie Details</h1>
-      <p>Movie Image goes here</p>
-      <p>Description goes here</p>
-      <p>Movie Genres goes here</p>
-      <button type="submit">Back to Home Page</button>
+      {movieDetails.map(movie => {
+        return (
+          <div>
+            <img src={movie.poster} alt={movie.title}/>
+            <h1>{movie.title}</h1>
+            <p>{movie.description}</p>
+            
+          </div>
+        );
+      })}
+      <div> Genres:
+        {movieGenres.map(genre => {
+          return (
+            <div>
+              {genre.name}
+            </div>
+          )
+        })}
+      </div>
+      <button onClick={handleBackButton}>Back to Home Page</button>
     </div>
   )
 }

@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;
   pool.query(query)
     .then( result => {
-      console.log('movie router result.rows', result.rows)
+      //console.log('movie router result.rows', result.rows)
       res.send(result.rows);
     })
     .catch(err => {
