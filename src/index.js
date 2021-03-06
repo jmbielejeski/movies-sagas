@@ -16,7 +16,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchAllGenres);
     yield takeEvery('ADD_MOVIE', addMovie);
-    yield takeEvery('FETCH_DETAILS', fetchDetails);
+    yield takeEvery('FETCH_MOVIE_DETAILS', fetchDetails);
 }
 
 function* fetchAllMovies() {
@@ -96,7 +96,7 @@ const genres = (state = [], action) => {
 }
 
 // store movie details
-const movieDetails = (state = {}, action) => {
+const movieDetails = (state = [], action) => {
   if (action.type === 'SET_DETAILS') {
     return action.payload;
   }

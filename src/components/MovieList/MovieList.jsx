@@ -21,12 +21,17 @@ function MovieList() {
   const goToDetails = (movieId) => {
     // dispatch data in order to pull up specific movie details
     dispatch({
-      type: 'FETCH_DETAILS',
+      type: 'FETCH_MOVIE_DETAILS',
+      payload: movieId
+    })
+
+    dispatch({
+      type: 'FETCH_GENRES',
       payload: movieId
     })
 
     // go to details page
-    history.push(`/MovieDetails/${movieId}`)
+    history.push(`/MovieDetails/`)
   }
 
   return (

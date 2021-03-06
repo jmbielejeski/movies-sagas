@@ -6,9 +6,7 @@ function MovieDetails() {
 
   let history = useHistory();
 
-  let movieDetails = useSelector(store => store.movieDetails);
-
-  console.log('movieDetails', movieDetails)
+  const movieDetails = useSelector(store => store.movieDetails);
 
   const handleBackButton = () => {
     history.push('/');
@@ -16,11 +14,16 @@ function MovieDetails() {
   
   return (
     <div>
-      <h1>Movie Details</h1>
-      <h2>{movieDetails.title}</h2>
-      <p>Image goes here</p>
-      <p>Description goes here</p>
-      <p>Movie Genres goes here</p>
+      {movieDetails.map(movie => {
+        return (
+          <div>
+            <img src={movie.poster} alt={movie.title}/>
+            <h1>{movie.title}</h1>
+            <p>{movie.description}</p>
+            
+          </div>
+        );
+      })}
       <button onClick={handleBackButton}>Back to Home Page</button>
     </div>
   )
