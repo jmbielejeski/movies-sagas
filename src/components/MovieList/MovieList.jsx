@@ -18,8 +18,15 @@ function MovieList() {
     history.push('/AddMovie');
   }
 
-  const goToDetails = () => {
-    history.push('/MovieDetails')
+  const goToDetails = (movieId) => {
+    // dispatch data in order to pull up specific movie details
+    dispatch({
+      type: 'FETCH_DETAILS',
+      payload: movieId
+    })
+
+    // go to details page
+    history.push(`/MovieDetails/${movieId}`)
   }
 
   return (
@@ -29,7 +36,7 @@ function MovieList() {
           <section className="movies">
               {movies.map(movie => {
                   return (
-                      <div key={movie.id} onClick={goToDetails} >
+                      <div key={movie.id} onClick={() => goToDetails(movie.id)} >
                           <h3>{movie.title}</h3>
                           <img src={movie.poster} alt={movie.title}/>
                       </div>
