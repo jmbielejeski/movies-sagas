@@ -15,6 +15,7 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchAllGenres);
+    yield takeEvery('ADD_MOVIE', addMovie)
 }
 
 function* fetchAllMovies() {
@@ -28,6 +29,17 @@ function* fetchAllMovies() {
         console.log('get all error');
     }
         
+}
+
+// sage to grab and send new movie to DB
+function* addMovie(action) {
+  console.log('addMovie payload', action.payload)
+  try {
+    yield axios.post('/api/movie', action.payload)
+  }
+  catch {
+    console.log('failed to add movie')
+  }
 }
 
 function* fetchAllGenres() {

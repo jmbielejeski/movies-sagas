@@ -9,9 +9,9 @@ function AddMovie() {
   const genres = useSelector(store => store.genres);
 
 
-  let [movieTitle, setMovieTitle] = useState('');
-  let [movieDescription, setMovieDescription] = useState('');
-  let [movieImageUrl, setMovieImageUrl] = useState('')
+  let [title, setTitle] = useState('');
+  let [description, setDescription] = useState('');
+  let [poster, setPoster] = useState('')
   let [genre, setGenre] = useState('');
 
   // console.log('movieTitle is', movieTitle);
@@ -29,10 +29,10 @@ function AddMovie() {
     dispatch({
       type: 'ADD_MOVIE',
       payload: {
-        movieTitle,
-        movieDescription,
-        movieImageUrl,
-        genre
+        title,
+        description,
+        poster,
+        genre_id: Number(genre)
       }
     })
   }
@@ -42,17 +42,17 @@ function AddMovie() {
       <input 
         type="text"
         placeholder="Movie Title"
-        onChange={(evt) => setMovieTitle(evt.target.value)}
+        onChange={(evt) => setTitle(evt.target.value)}
       />
       <input
         type="text"
         placeholder="Movie Description"
-        onChange={(evt) => setMovieDescription(evt.target.value)}
+        onChange={(evt) => setDescription(evt.target.value)}
       />
       <input
         type="text"
         placeholder="Movie Image URL"
-        onChange={(evt) => setMovieImageUrl(evt.target.value)}
+        onChange={(evt) => setPoster(evt.target.value)}
       />
       <select 
         value={genres.id}
