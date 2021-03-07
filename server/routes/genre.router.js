@@ -6,6 +6,7 @@ router.get('/', (req, res) => {
 
   // console.log('in genre router get route')
 
+  // grab all the genres
   const query = `SELECT * FROM genres`;
   pool.query(query)
     .then( result => {
@@ -17,7 +18,7 @@ router.get('/', (req, res) => {
       res.sendStatus(500)
     })
 
-});
+}); // end router.ger
 
 
 module.exports = router;

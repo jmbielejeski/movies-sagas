@@ -8,22 +8,25 @@ function MovieList() {
   const dispatch = useDispatch();
   const movies = useSelector(store => store.movies);
 
+  // grab movieList on load
   useEffect(() => {
       dispatch({ type: 'FETCH_MOVIES' })
   }, []);
 
+  // go to AddMovie
   const goToAddMovie = () => {
     console.log('in goToAddMovie')
     history.push('/AddMovie');
   }
 
+  // go to details of movie clicked on
   const goToDetails = (movieId) => {
     // dispatch data in order to pull up specific movie details
     dispatch({
       type: 'FETCH_MOVIE_DETAILS',
       payload: movieId
     })
-
+    // dispatch genre details to get genres for this movie
     dispatch({
       type: 'FETCH_MOVIE_GENRES',
       payload: movieId
@@ -36,8 +39,10 @@ function MovieList() {
   return (
       <main>
           <h1>Movie List</h1>
+          {/* go to AddMovie */}
           <button onClick={goToAddMovie} className="button">Add movie</button>
           <section className="movies">
+            {/* map to go over movie list and render to DOM */}
               {movies.map(movie => {
                   return (
                       <div class="card" key={movie.id} onClick={() => goToDetails(movie.id)} >

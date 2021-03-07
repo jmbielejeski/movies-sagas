@@ -4,6 +4,7 @@ const pool = require('../modules/pool')
 
 router.get('/', (req, res) => {
 
+  // grab all movies from DB
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;
   pool.query(query)
     .then( result => {
@@ -15,7 +16,7 @@ router.get('/', (req, res) => {
       res.sendStatus(500)
     })
 
-});
+}); // end router.get
 
 router.post('/', (req, res) => {
   console.log(req.body);
@@ -52,6 +53,6 @@ router.post('/', (req, res) => {
     console.log(err);
     res.sendStatus(500)
   })
-})
+}) // end router.post
 
 module.exports = router;

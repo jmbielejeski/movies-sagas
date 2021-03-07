@@ -2,10 +2,12 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+// grab a movie by id
 router.get('/:id', (req, res) => {
 
   let movieId = req.params.id;
 
+  // query to grab movie details by id
   const query = 
     `SELECT * FROM "movies"
     WHERE "movies".id = ${movieId}`;
@@ -19,12 +21,13 @@ router.get('/:id', (req, res) => {
       res.sendStatus(500)
     })
 
-});
+}); // end router.get
 
 router.get('/genres/:id', (req, res) => {
 
   let movieId = req.params.id;
 
+  // grab genre names for movie by id
   const query = 
   `SELECT "genres".name 
     FROM "movies"
@@ -41,7 +44,7 @@ router.get('/genres/:id', (req, res) => {
       res.sendStatus(500)
     })
 
-});
+}); // end router.get
 
 
 module.exports = router;

@@ -37,32 +37,37 @@ function* fetchAllMovies() {
 function* addMovie(action) {
   console.log('addMovie payload', action.payload)
   try {
+    // add new movie to DB
     yield axios.post('/api/movie', action.payload)
   }
   catch {
     console.log('failed to add movie')
   }
-}
+} // end AddMovie
 
 function* fetchAllGenres() {
   // fetch all genres from DB
   try {
+    // grab genres
     const genres = yield axios.get('/api/genre');
     // console.log('get all genres.data', genres.data);
+    // set these genres to genres reducer
     yield put({ type: 'SET_GENRES', payload: genres.data });
   }
   catch {
     console.log('error getting genres');
   }
-}
+} // end fetchAllGenres
 
 // fetch details for movie
 function* fetchDetails(action) {
   console.log('fetching details');
 
+  // grab movie details from DB
   let response = yield axios.get(`/api/details/${action.payload}`)
 
   try {
+    // send movie details to movieDetails reducer
     yield put({
       type: 'SET_DETAILS',
       payload: response.data
@@ -71,14 +76,16 @@ function* fetchDetails(action) {
   catch {
     console.log('failed to get movie details')
   }
-}
+} // end fetchDetails
 
 function * fetchMovieGenres(action) {
   console.log('fetching movie genres');
 
+  // gran this movies genres from DB
   let response = yield axios.get(`/api/details/genres/${action.payload}`);
 
   try {
+    // send these genres to movieGenres reducer
     yield put({
       type: 'SET_MOVIE_GENRES',
       payload: response.data
@@ -87,7 +94,7 @@ function * fetchMovieGenres(action) {
   catch {
     console.log('failed to get movie genres')
   }
-}
+} // end fetchMovieGenres
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
@@ -110,7 +117,7 @@ const genres = (state = [], action) => {
         default:
             return state;
     }
-}
+} // end genres
 
 // store movie details
 const movieDetails = (state = [], action) => {
@@ -118,14 +125,14 @@ const movieDetails = (state = [], action) => {
     return action.payload;
   }
   return state;
-}
+} // end movieDetails
 
 const movieGenres = (state = [], action) => {
   if (action.type === 'SET_MOVIE_GENRES') {
     return action.payload;
   }
   return state;
-}
+} // end movieGenres
 
 // Create one store that all components can use
 const storeInstance = createStore(
