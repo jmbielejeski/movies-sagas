@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import './MovieList.css'
 
 function MovieList() {
 
@@ -37,12 +36,12 @@ function MovieList() {
   return (
       <main>
           <h1>Movie List</h1>
-          <button onClick={goToAddMovie}>Add movie</button>
+          <button onClick={goToAddMovie} className="button">Add movie</button>
           <section className="movies">
               {movies.map(movie => {
                   return (
-                      <div key={movie.id} onClick={() => goToDetails(movie.id)} >
-                          <h3>{movie.title}</h3>
+                      <div class="card" key={movie.id} onClick={() => goToDetails(movie.id)} >
+                          <h3 className="movieTitle">{movie.title}</h3>
                           <img src={movie.poster} alt={movie.title}/>
                       </div>
                   );
