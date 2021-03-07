@@ -34,7 +34,7 @@ function MovieDetails() {
           )
         })}
       </div>
-      <button onClick={handleBackButton}>Back to Home Page</button>
+      <button onClick={handleBackButton} className="button">Back to Home Page</button>
     </div>
   )
 }

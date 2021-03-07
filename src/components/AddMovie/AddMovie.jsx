@@ -78,8 +78,8 @@ function AddMovie() {
           )
         })}
       </select>
-      <button onClick={handleAddMovie}>Save</button>
-      <button onClick={handleCancel}>Cancel</button>
+      <button onClick={handleAddMovie} className="button">Save</button>
+      <button onClick={handleCancel} className="button">Cancel</button>
     </div>
   )
 }
