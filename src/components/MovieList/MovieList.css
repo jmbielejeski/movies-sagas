@@ -10,8 +10,6 @@
   border-radius: 5px;
   margin: .5rem;
   border: 1px solid #c9c9c9;
-  
-
 }
 
 .card:hover {
@@ -33,6 +31,7 @@
 	padding:6px 24px;
 	text-decoration:none;
 	text-shadow:0px -1px 0px #5b6178;
+  margin: .5rem;
 }
 .button:hover {
 	background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
@@ -41,4 +40,42 @@
 .button:active {
 	position:relative;
 	top:1px;
+}
+
+#cancelButton {
+  background:linear-gradient(to bottom, #ef3333 5%, #d20101 100%);
+	background-color:#ef3333;
+}
+
+#cancelButton:hover {
+	background:linear-gradient(to bottom, #d20101 5%, #ef3333 100%);
+	background-color:#d20101;
+}
+
+input {
+  width: 50%;
+  margin: .5rem;
+  box-sizing: border-box;  
+  border: 4px solid #019ad2;
+  border-radius: 5px;  
+  
+}
+
+textarea {
+  width: 50%;
+  height: 200px;
+  padding: .7rem 1rem;
+  box-sizing: border-box;
+  border: 4px solid #019ad2;
+  border-radius: 5px;
+
+}
+  
+  select {
+    width: 50%;
+    padding: .7rem 1rem;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #019ad2;  
 }

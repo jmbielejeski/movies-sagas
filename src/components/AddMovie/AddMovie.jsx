@@ -29,7 +29,9 @@ function AddMovie() {
 
   }, []);
 
-  const handleAddMovie = () => {
+  const handleAddMovie = (event) => {
+    event.preventDefault();
+
     dispatch({
       type: 'ADD_MOVIE',
       payload: {
@@ -47,40 +49,46 @@ function AddMovie() {
   }
 
   return (
-    <div>
-      <input 
+    <form onSubmit={handleAddMovie} claseName="inputForm">
+      <input
+        id="titleInput"
         type="text"
         placeholder="Movie Title"
         onChange={(evt) => setTitle(evt.target.value)}
+        required
       />
-      <input
+      <textarea
+        id="descriptionInput"
         type="text"
         placeholder="Movie Description"
         onChange={(evt) => setDescription(evt.target.value)}
+        required
       />
       <input
+        id="posterInput"
         type="text"
-        placeholder="Movie Image URL"
+        placeholder="Movie Poster URL"
         onChange={(evt) => setPoster(evt.target.value)}
+        required
       />
-      <select 
+      <select
+        id="genreInput" 
         value={genres.id}
         onChange={(evt) => setGenre(evt.target.value)}
-        >  
-        <option disabled value='0'>
-          Pick One!
-        </option>
+        >
         {genres.map((genre) => {
           return (
             <option key={genre.id} value={genre.id}>
               {genre.name}
             </option>
-          )
+          ) 
         })}
       </select>
-      <button onClick={handleAddMovie} className="button">Save</button>
-      <button onClick={handleCancel} className="button">Cancel</button>
-    </div>
+      <div>
+        <button className="button">Save</button>
+        <button onClick={handleCancel} className="button" id="cancelButton">Cancel</button>
+      </div>
+    </form>
   )
 }
 
