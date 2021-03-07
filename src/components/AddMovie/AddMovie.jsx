@@ -50,6 +50,7 @@ function AddMovie() {
 
   return (
     <form onSubmit={handleAddMovie} claseName="inputForm">
+      <h1>Add a Movie</h1>
       <input
         id="titleInput"
         type="text"

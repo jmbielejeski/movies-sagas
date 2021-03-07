@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import './MovieList.css'
 
 function MovieList() {
 
@@ -42,7 +41,7 @@ function MovieList() {
               {movies.map(movie => {
                   return (
                       <div class="card" key={movie.id} onClick={() => goToDetails(movie.id)} >
-                          <h3>{movie.title}</h3>
+                          <h3 className="movieTitle">{movie.title}</h3>
                           <img src={movie.poster} alt={movie.title}/>
                       </div>
                   );

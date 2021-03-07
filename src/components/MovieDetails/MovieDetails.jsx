@@ -14,18 +14,18 @@ function MovieDetails() {
   }
   
   return (
-    <div>
+    <div className="movieDetails">
       {movieDetails.map(movie => {
         return (
           <div>
-            <img src={movie.poster} alt={movie.title}/>
             <h1>{movie.title}</h1>
+            <img src={movie.poster} alt={movie.title}/>
             <p>{movie.description}</p>
             
           </div>
         );
       })}
-      <div> Genres:
+      <div> <h3>Genres:</h3>
         {movieGenres.map(genre => {
           return (
             <div>
